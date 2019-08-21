@@ -4,7 +4,7 @@ title: 【新手必读】美国信用卡新手入门攻略【2019年更新】
 date: 2019-08-21T14:04:00.000Z
 description: '转自 https://www.uscreditcardguide.com/a-guide-for-beginners/'
 featuredpost: false
-featuredimage: /img/dsc8574.jpg
+featuredimage: /img/chemex.jpg
 tags:
   - flavor
   - tasting
