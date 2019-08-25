@@ -1,7 +1,7 @@
 ---
 templateKey: 'product-page'
 path: /products
-title: Our Coffee
+title: Compare Credit Cards
 image: /img/jumbotron.jpg
 heading: Decision Maker
 description: >-
