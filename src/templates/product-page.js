@@ -32,14 +32,8 @@ export const ProductPageTemplate = ({
       </h2>
     </div>
     <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <Testimonials testimonials={testimonials} />
-            </div>
-          </div>
-        </div>
+      <div className="column is-10 is-offset-1">
+        <Testimonials testimonials={testimonials} />
       </div>
     </section>
   </div>
@@ -59,6 +53,7 @@ const ProductPage = ({ data }) => {
     var card_data = CreditCardJson[i];
     testimonials.push({
       'card_name': card_data['card_name'],
+      'image_url': card_data['image_url'],
       'bullet_points': card_data['bullet_points'],
       'intro_apr': card_data['Intro APR'],
       'annual_fee': card_data['Annual fee'],
