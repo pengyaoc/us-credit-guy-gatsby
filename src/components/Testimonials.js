@@ -10,7 +10,7 @@ const Testimonials = ({ testimonials }) => (
   <div>
     {testimonials.map(testimonial => (
       <Container className="border mb-3 shadow-sm">
-        <Row className="m-4">
+        <Row className="p-4">
           <Col md={4} className="mb-2">
             <Row>
               <Image src={testimonial.image_url} fluid rounded />
@@ -20,11 +20,13 @@ const Testimonials = ({ testimonials }) => (
             <Row>
               <h2>{testimonial.card_name}</h2>
             </Row>
-            {testimonial.bullet_points.map(bullet_point => (
-              <Row>
-              {bullet_point}
-              </Row>
-            ))}
+            <Row>
+              <ul>
+                {testimonial.bullet_points.map(bullet_point => (
+                  <li>{bullet_point}</li>
+                ))}
+              </ul>
+            </Row>
           </Col>
         </Row>
         <Row className="bg-light p-4">

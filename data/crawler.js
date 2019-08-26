@@ -14,6 +14,9 @@ function run () {
             page_counts = {
                 "rewards-credit-cards": 14,
                 "cash-rewards-credit-cards": 8,
+                "travel-miles-credit-cards": 4,
+                "credit-card-bonus-offers": 7,
+                "business-credit-cards": 8,
             }
             for (const [category, page_count] of Object.entries(page_counts)) {
                 category_paged_link = paged_link.replace('rewards-credit-cards', category);
@@ -35,7 +38,26 @@ function run () {
                         // Get image
                         image = item.getElementsByClassName('card-image-apply-set__image-link')[0].querySelector('img');
                         result['image_url'] = image.src;
-                        result['card_name'] = image.alt;
+                        card_name = image.alt;
+                        
+                        replacements = {
+                            // Don't change order. Replacement is applied in the order.
+                            "<sup>&reg;</sup>": "®",
+                            "&reg;": "®",
+                            "<sup>&trade;</sup>": "™",
+                            "&trade;": "™",
+                            "<sup>&#8482;</sup>": "™",
+                            "&#8482;": "™",
+                            "<sup>&#8480;</sup>": "℠",
+                            "&#8480;": "℠",
+                        }
+
+                        for (const [key, value] of Object.entries(replacements)) {
+                            if (card_name.includes(key)) {
+                                card_name = card_name.replace(new RegExp(key, 'g'), value);
+                            }
+                        }
+                        result['card_name'] = card_name;
                         
                         // Get bullet points
                         read_more_button = item.getElementsByClassName('marketing-bullets-drawer__toggle-label');
@@ -60,6 +82,7 @@ function run () {
                             } else { // Recommended Credit Score
                                 key = item.getElementsByClassName('header-text')[0].textContent;
                                 value = item.getElementsByClassName('label-range')[0].textContent;
+                                value = value.split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
                             }
                             result[key] = value;
                         }
