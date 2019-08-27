@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Find Best Credit Card Offer for You
-image: /img/home-jumbotron.jpg
+image: /img/mountaintop.jpg
 heading: Find Best Credit Card Offer for You
 subheading: > 
   Credit guy finds sign-up bonuses and generous rewards with a few clicks.
