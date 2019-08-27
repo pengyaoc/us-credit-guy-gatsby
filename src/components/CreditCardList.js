@@ -6,24 +6,24 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 
-const Testimonials = class extends React.Component {
+const CreditCardList = class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current_cards: props.testimonials,
+      current_cards: props.credit_cards,
     };
   }
   
   onSelectorChange(e) {
     var current_cards = [];
     if (e.target.value != "Select Filter...") {
-      for (let card of this.props.testimonials) {
+      for (let card of this.props.credit_cards) {
         if (card['card_name'].includes(e.target.value)) {
           current_cards.push(card);
         }
       } 
     } else {
-      current_cards = this.props.testimonials;
+      current_cards = this.props.credit_cards;
     }
     this.setState({current_cards: current_cards})
   }
@@ -83,8 +83,8 @@ const Testimonials = class extends React.Component {
 }
 
 
-Testimonials.propTypes = {
-  testimonials: PropTypes.arrayOf(
+CreditCardList.propTypes = {
+  credit_cards: PropTypes.arrayOf(
     PropTypes.shape({
       card_name: PropTypes.string,
       image_url: PropTypes.string,
@@ -97,4 +97,4 @@ Testimonials.propTypes = {
   ),
 }
 
-export default Testimonials
+export default CreditCardList

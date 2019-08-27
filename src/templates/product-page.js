@@ -2,17 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Testimonials from '../components/Testimonials'
+import CreditCardList from '../components/CreditCardList'
 import CreditCardJson from '../../data/best-credit-card.json'
 
 export const ProductPageTemplate = ({
-  image,
-  title,
-  testimonials,
+  credit_cards,
 }) => ( 
   <div className="content">
     <section className="section section--gradient">
-        <Testimonials testimonials={testimonials} />
+        <CreditCardList credit_cards={credit_cards} />
     </section>
   </div>
 )
@@ -20,16 +18,16 @@ export const ProductPageTemplate = ({
 ProductPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
-  testimonials: PropTypes.array,
+  credit_cards: PropTypes.array,
 }
 
 const ProductPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
-  var testimonials = [];
+  var credit_cards = [];
   for (var i = 0; i < CreditCardJson.length; i++) {
     var card_data = CreditCardJson[i];
-    testimonials.push({
+    credit_cards.push({
       'card_name': card_data['card_name'],
       'image_url': card_data['image_url'],
       'bullet_points': card_data['bullet_points'],
@@ -44,7 +42,7 @@ const ProductPage = ({ data }) => {
       <ProductPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
-        testimonials={testimonials}
+        credit_cards={credit_cards}
       />
     </Layout>
   )
